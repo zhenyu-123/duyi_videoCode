@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./index.js"></script>
+    <script>
+      const urls = [];
+      for (let i = 1; i <= 20; i++) {
+        urls.push(`https://jsonplaceholder.typicode.com/todos/${i}`);
+      }
+      console.log(urls, "urls");
+      concurRequest(urls, 10).then((resp) => {
+        console.log(resp);
+      });
+    </script>
+  </body>
+</html>

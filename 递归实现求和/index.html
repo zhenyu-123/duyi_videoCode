@@ -1,0 +1,36 @@
+<!--
+ * @Description: 
+ * @Autor: sy
+ * @Date: 2023-10-25 08:47:04
+ * @LastEditors: sy
+ * @LastEditTime: 2023-10-25 08:54:02
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 数组求和，不允许使用循环
+      /*
+        思路：
+        1. 递归函数f(i)代表从数组下标i开始计算求和
+        2. 递归终止条件：i>=数组长度，返回0
+        3. 递归调用：f(i+1)
+        4. 返回值：nums[i]+f(i+1)
+        5. 调用f(0)
+        例如：f(2)=nums[2]+f(3)
+        */
+      var nums = [5, 2, 6, 2, 1];
+      function sum(nums) {
+        function f(i) {
+          return i >= nums.length ? 0 : nums[i] + f(i + 1);
+        }
+        f(0); // 代表从数组下标0开始计算求和
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var a = 10;
+      var b = 20;
+      //  如何不借助第三个变量完成上面的交换
+      // 混合
+      //   a = a + b;
+      //   b = a - b;
+      //   a = a - b;
+      //   console.log(a, b);
+      //   // 20 10
+
+    //   a = a ^ b;
+    //   b = a ^ b;
+    //   a = a ^ b;
+    //   console.log(a, b);
+    //   // 10 20
+
+    [b, a] = [a, b];
+    console.log(a, b);
+    </script>
+  </body>
+</html>

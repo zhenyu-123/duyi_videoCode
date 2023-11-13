@@ -1,0 +1,26 @@
+<!--
+ * @Description: 
+ * @Autor: sy
+ * @Date: 2023-10-30 09:53:25
+ * @LastEditors: sy
+ * @LastEditTime: 2023-10-30 10:06:26
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var START = 2 ** 53;
+      var END = START + 100;
+      for (var i = START; i < END; i++) {
+        console.log("loop");
+      }
+      // 结果是不可预算的，因为超出了最大安全整数范围  Number.MAX_SAFE_INTEGER+1===Number.MAX_SAFE_INTEGER+2// true;
+      // 最大安全整数不能再进行加法运算
+    </script>
+  </body>
+</html>

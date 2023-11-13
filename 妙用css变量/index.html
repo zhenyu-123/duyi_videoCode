@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* :root {
+      --w: 500px;
+    } */
+    .container {
+      width: 80%;
+      height: 300px;
+      border: 3px solid #333;
+      position: relative;
+      margin: 0 auto;
+    }
+    .item {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      left: 0;
+      top: 30px;
+      position: absolute;
+      animation: move 4s linear infinite;
+    }
+    @keyframes move {
+      50% {
+        transform: translateX(
+          calc(var(--w) - 100%)
+        ); /*父元素宽度减去子元素宽度*/
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="item"></div>
+    </div>
+    <script>
+      const container = document.querySelector(".container");
+      const item = document.querySelector(".item");
+      item.style.setProperty("--w", container.clientWidth + "px");
+ 
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 判断数字x是否是2的次方
+       * x>0 且为整数
+       * 位运算符&
+
+　　&是表示位的与运算，把左右两边的数字转化为二进制，然后每一位分别进行比较，如果相等就为1，不相等即为0。同时&具有强制转换的功能，把false,true转换成了0和1进行比较。
+  而0又表示false的意思，所以带有false的都挂掉了，偶尔也可以当做逻辑与来使用。
+       * */
+      function isPowerOfTwo(x) {
+        return (x & (x - 1)) == 0;
+      }
+
+      //  判断奇数还是偶数
+      function isEven(x) {
+        if (x & 1) {
+          console.log("奇数"); //奇数转为二进制最后一位肯定是1，而偶数二进制的最后一位是0，1转换为二进制还是1，所以判断的结果只会是0或者1.
+        } else {
+          console.log("偶数");
+        }
+      }
+    </script>
+  </body>
+</html>

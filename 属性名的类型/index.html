@@ -1,0 +1,27 @@
+<!--
+ * @Description: 
+ * @Autor: sy
+ * @Date: 2023-10-30 09:37:46
+ * @LastEditors: sy
+ * @LastEditTime: 2023-10-30 09:43:40
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        对象的属性名只会有俩种：string和symbol
+        属性名不是字符串或者symbol，会转成字符串；如果属性名是对象会调用toString方法转成字符串
+        */
+      let a = {};
+      let b = { k: 1 };
+      a[b] = 2;
+      console.log(a);
+    </script>
+  </body>
+</html>

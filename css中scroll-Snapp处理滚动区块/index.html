@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <style>
+    /* 这些属性主要用于在H5（HTML5）中实现滚动 snap 功能。 */
+    .container {
+      width: 300px;
+      /* //设置容器高度为300px */
+      height: 300px;
+      /* //设置容器为flex布局 */
+      display: flex;
+      /* //设置容器的溢出x轴为滚动条 */
+      overflow-x: scroll;
+      /* 设置容器在水平方向上具有 snap-to-start 和 snap-to-end 功能 */
+      scroll-snap-type: x mandatory;
+      /* //设置容器的滚动行为为平滑的 */
+      scroll-behavior: smooth;
+      margin: 0 auto;
+    }
+    /* //设置容器的滚动条的宽度为0 */
+    .container::-webkit-scrollbar {
+      width: 0;
+    }
+    /* //设置item的属性 */
+    .item {
+      /* //设置item的缩小比例为0 */
+      flex-shrink: 0;
+      /* //设置item的宽度为100% */
+      width: 100%;
+      /* //设置item的高度为100% */
+      height: 100%;
+      /* //设置item为flex布局 */
+      display: flex;
+      /* //设置item的垂直居中 */
+      align-items: center;
+      /* //设置item的horizontal居中 */
+      justify-content: center;
+      /* //设置item的字体大小为3em */
+      font-size: 3em;
+      /* 设置项目在滚动时 snap 到开始位置 */
+      scroll-snap-align: start;
+      /*设置项目在滚动时 snap 到结束位置 */
+      scroll-snap-stop: always;
+    }
+    .item:nth-child(1) {
+      background-color: red;
+    }
+    .item:nth-child(2) {
+      background-color: green;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+  </body>
+</html>

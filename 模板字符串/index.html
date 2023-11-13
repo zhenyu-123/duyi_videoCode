@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const student = {
+        name: "Maria",
+        surname: "Gonzalez",
+        age: 12,
+        getFullName: function () {
+          return this.name + " " + this.surname;
+        },
+      };
+      const str = tagFn`我的名字叫${student.name},今年${student.age}岁了`; //标记模板---相当于----tagFn(XXX)将后面的字符串传入作为参数
+      console.log(str);
+      function tagFn(params) {
+        console.log(params);
+        console.log(arguments);
+        // return tagFn
+      }
+    </script>
+  </body>
+</html>

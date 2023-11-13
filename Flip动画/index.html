@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+      width: 500px;
+      height: 400px;
+      border: 1px solid #000;
+    }
+    .box .btn {
+      width: 30px;
+      height: 30px;
+      background-color: aqua;
+    }
+  </style>
+  <body>
+    <div id="app"></div>
+    <style>
+      #app {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+      }
+      .app-to-end {
+        top: 100px;
+      }
+      .animate-on-transforms {
+        transition: all 2s;
+      }
+    </style>
+
+    <script>
+      var app = document.getElementById("app");
+      var first = app.getBoundingClientRect();
+      app.classList.add("app-to-end");
+      var last = app.getBoundingClientRect();
+      var invert = first.top - last.top;
+      //使元素看起来好像在起始点
+      app.style.transform = `translateY(${invert}px)`;
+      requestAnimationFrame(function () {
+        //启用tansition，并移除翻转的改变
+        app.classList.add("animate-on-transforms");
+        app.style.transform = "";
+      });
+      app.addEventListener("transitionend", () => {
+        app.classList.remove("animate-on-transforms");
+      });
+    </script>
+  </body>
+</html>

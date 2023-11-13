@@ -1,0 +1,26 @@
+<!--
+ * @Description: 
+ * @Autor: sy
+ * @Date: 2023-10-30 08:58:49
+ * @LastEditors: sy
+ * @LastEditTime: 2023-10-30 09:05:37
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js 标记语法</title>
+  </head>
+  <body>
+    <script>
+      outerLoop: for (let i = 0; i < 10; i++) {
+        console.log("外层循环");
+        for (let j = 0; j < 10; j++) {
+          console.log("内层循环");
+          break outerLoop;
+        }
+      }
+    </script>
+  </body>
+</html>

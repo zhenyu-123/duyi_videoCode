@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {*} url  请求地址
+       * @param {*} maxCount 最大请求数量
+       * @returns 返回Promise
+       */
+      function request(url, maxCount = 5) {
+        return fetch(url).catch((err) => {
+          maxCount <= 0 ? Promise.reject(err) : request(url, maxCount - 1);
+        });
+      }
+
+      request("http://sadsad.com", 1)
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    </script>
+  </body>
+</html>

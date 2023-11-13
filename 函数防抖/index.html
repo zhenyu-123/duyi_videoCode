@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function debounce(fn, delay) {
+        var timer = null;
+        return function () {
+          var context = this;
+          var args = arguments;
+          clearTimeout(timer);
+        //   timer = setTimeout(function () {
+        //     fn.apply(context, args);
+        //   }, delay);
+          //   或者
+          timer = setTimeout(fn, delay);
+        };
+      }
+
+      var fn = debounce(function () {
+        console.log("debounce");
+      }, 1000);
+
+      fn();
+      fn(); // 不会执行
+      fn(); // 不会执行
+    </script>
+  </body>
+</html>

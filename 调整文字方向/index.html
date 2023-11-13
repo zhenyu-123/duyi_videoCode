@@ -1,0 +1,57 @@
+<!--
+ * @Description: 
+ * @Autor: sy
+ * @Date: 2023-10-30 10:27:53
+ * @LastEditors: sy
+ * @LastEditTime: 2023-10-30 11:32:15
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      font-size: 30px;
+    }
+    .poem {
+      color: #333;
+      font-size: 1.6em;
+      /* 水平-从右到左 */
+      writing-mode: vertical-rl;
+      float: right;
+    }
+    .poem p {
+      letter-spacing: 20px;
+    }
+    .auther {
+      color: #aaa;
+      font-size: 1em;
+      text-align: end;
+    }
+
+    .auther .year {
+      /* 文字朝向 */
+      text-orientation: upright;
+      /* 文字在正常朝下，要不要连着组合起来 */
+      text-combine-upright: all;
+    }
+  </style>
+  <body>
+    <div class="poem">
+      <h2>山亭夏日</h2>
+      <div class="auther">
+        <span>高骈</span>
+        <span class="year">821</span>
+        <span class="to">~</span>
+        <span class="year">887</span>
+      </div>
+      <p>绿树阴浓夏日长</p>
+      <p>楼台倒影入池塘</p>
+      <p>水晶帘动微风起</p>
+      <p>满架蔷薇一院香</p>
+    </div>
+  </body>
+</html>

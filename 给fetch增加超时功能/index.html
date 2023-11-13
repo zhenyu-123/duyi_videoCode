@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fetchWithTimeout(url, timeout) {
+        const abortController = new AbortController();
+        const signal = abortController.signal;
+        const timeoutId = setTimeout(() => {
+          abortController.abort();
+        }, timeout);
+
+        return fetch(url, { signal })
+          .then(() => {
+            clearTimeout(timeoutId);
+          })
+          .catch((error) => {
+            if (error.name === "AbortError") {
+              clearTimeout(timeoutId);
+              throw new Error(
+                `Request to ${url} timed out after ${timeout} milliseconds`
+              );
+            }
+            throw error;
+          });
+      }
+
+      // 使用示例
+      fetchWithTimeout("https://jsonplaceholder.typicode.com/todos/1", 100)
+        .then((response) => {
+          // 处理响应
+        })
+        .catch((error) => {
+          // 处理错误
+        });
+    </script>
+  </body>
+</html>
