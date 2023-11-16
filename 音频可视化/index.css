@@ -1,0 +1,13 @@
+body{
+    background-color: #000;
+    position: relative;
+    text-align: center;
+}
+canvas{
+    margin:  0 auto;
+}
+audio{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}

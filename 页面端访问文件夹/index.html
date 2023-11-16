@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>选择文件</button>
+    <script>
+      /*
+        1、选择文件夹
+        2、得到文件夹中的内容
+        3、读到某个文件的内容
+        4、高亮显示代码
+        */
+      const btn = document.querySelector("button");
+      btn.onclick = async function () {
+        try {
+          const handle = await window.showDirectoryPicker();
+          processHandle(handle);
+        } catch (err) {
+          // 用户拒绝
+        }
+
+        function processHandle(handle) {
+          // 得到异步迭代器
+          const iter = handle.entries();
+        }
+      };
+    </script>
+  </body>
+</html>
