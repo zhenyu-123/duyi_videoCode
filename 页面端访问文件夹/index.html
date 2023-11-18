@@ -12,22 +12,46 @@
         1、选择文件夹
         2、得到文件夹中的内容
         3、读到某个文件的内容
-        4、高亮显示代码
+        4、高亮显示代码 hightlight.js
+
+         了解 FileSystem API
         */
       const btn = document.querySelector("button");
+
+
       btn.onclick = async function () {
         try {
           const handle = await window.showDirectoryPicker();
-          processHandle(handle);
+          const root = await processHandle(handle);
+          console.log(root, "handle");
+          // 测试
+          const fileHandle = root.children[0];
+          const file = await fileHandle.getFile();
+          const reader = new FileReader();
+          reader.readAsText(file, "utf-8");
+          reader.onload = function (e) {
+            let text = e.target.result;
+            console.log(text);
+          };
         } catch (err) {
           // 用户拒绝
         }
 
-        function processHandle(handle) {
+        async function processHandle(handle) {
+          if (handle.kind === "file") {
+            return handle;
+          }
+          handle.children = [];
           // 得到异步迭代器
           const iter = handle.entries();
+          for await (const item of iter) {
+            handle.children.push(await processHandle(item[1]));
+          }
+          // for await :https://www.cnblogs.com/goloving/p/16009741.html
+          return handle;
         }
       };
+
     </script>
   </body>
 </html>

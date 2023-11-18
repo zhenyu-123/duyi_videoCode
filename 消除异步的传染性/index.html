@@ -1,0 +1,92 @@
+<!--
+ * @Description: 
+ * @Autor: sy
+ * @Date: 2023-11-16 16:44:56
+ * @LastEditors: sy
+ * @LastEditTime: 2023-11-16 17:42:33
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getUser() {
+        return fetch(
+          "https://my-json-server.typicode.com/typicode/demo/profile"
+        );
+      }
+
+      function m1() {
+        return getUser();
+      }
+
+      function m2() {
+        return m1();
+      }
+
+      function m3() {
+        return m2();
+      }
+
+      function main() {
+        const user = m3();
+        console.log(user);
+      }
+
+      function run(func) {
+        let cache = [];
+        let i = 0;
+        const _originalFetch = window.fetch;
+        window.fetch = (...args) => {
+          if (cache[i]) {
+            // 交付缓存结果
+            if (cache[i].status === "fulfilled") {
+              return cache[i].data;
+            } else if (cache[i].status === "rejected") {
+              return cache[i].err;
+            }
+          }
+          const result = {
+            status: "pendding",
+            data: null,
+            err: null,
+          };
+          cache[i++] = result;
+          // 发送请求
+          const porm = _originalFetch(...args)
+            .then((resp) => resp.json())
+            .then(
+              (resp) => {
+                result.status = "fulfilled";
+                result.data = resp;
+              },
+              (err) => {
+                result.status = "rejected";
+                result.err = err;
+              }
+            );
+          // 报错
+          throw porm;
+        };
+        try {
+          func();
+        } catch (err) {
+          // 什么时候引发重新执行func
+          if (err instanceof Promise) {
+            const reRun = () => {
+              i = 0;
+              func();
+              //   func.call(this,arguments)
+            };
+            err.then(reRun, reRun);
+          }
+        }
+      }
+      run(main);
+    </script>
+  </body>
+</html>
