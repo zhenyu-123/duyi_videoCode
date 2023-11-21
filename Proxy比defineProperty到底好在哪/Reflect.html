@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Reflect（反射） 是一个 JavaScript 对象，它提供了一种用于获取、设置、删除或添加属性或方法的方法。Reflect 对象在 JavaScript 1.6 版本中引入，
+      // 它提供了一种与 Object 对象不同的新方法来操作对象。
+
+      // 以下是 Reflect 对象的一些常用方法和属性：
+
+      // 1、Reflect.get(obj, prop,receiver)：获取对象 obj 的属性 prop 的值。如果属性不存在，返回 undefined。第三个参数 receiver 被添加了进来。receiver 是指代理本身，您可以使用 console.log(receiver) 来检查其内容。
+      // 2、Reflect.set(obj, prop, value)：设置对象 obj 的属性 prop 的值。
+      // 3、Reflect.deleteProperty(obj, prop)：删除对象 obj 的属性 prop。
+      // 4、Reflect.has(obj, prop)：检查对象 obj 是否具有属性 prop。如果具有属性，返回 true，否则返回 false。
+      // 5、Reflect.getOwnPropertyNames(obj)：获取对象 obj 的所有属性的名称数组。
+      // 6、Reflect.getOwnPropertySymbols(obj)：获取对象 obj 的所有属性的符号数组。
+      // 7、Reflect.getOwnPropertyKeys(obj)：获取对象 obj 的所有属性的键数组。
+      // 8、Reflect.getOwnPropertyValues(obj)：获取对象 obj 的所有属性的值数组。
+      // 9、Reflect.getPrototypeOf(obj)：获取对象 obj 的原型。
+      // 10、Reflect.setPrototypeOf(obj, prototype)：设置对象 obj 的原型。
+      // 11、Reflect.getOwnPropertyDescriptor(obj, prop)：获取对象 obj 的属性 prop 的属性描述符。
+      // 12、Reflect.setOwnPropertyDescriptor(obj, prop, descriptor)：设置对象 obj 的属性 prop 的属性描述符。
+      // 13、Reflect.deleteOwnPropertyDescriptor(obj, prop)：删除对象 obj 的属性 prop 的属性描述符。
+      // 14、Reflect.getOwnPropertyDescriptors(obj)：获取对象 obj 的所有属性的属性描述符对象。
+      // 15、Reflect.setOwnPropertyDescriptors(obj, descriptors)：设置对象 obj 的所有属性的属性描述符对象。
+      // 16、Reflect.deleteOwnPropertyDescriptors(obj)：删除对象 obj 的所有属性的属性描述符对象。
+      // 17、Reflect.getParameterNames(func, ...args)：获取函数 func 的参数名称数组。
+      // 18、Reflect.getParameterValues(func, ...args)：获取函数 func 的参数值数组。
+      // 19、Reflect.getParameterOptions(func, ...args)：获取函数 func 的参数选项对象。
+      // 20、Reflect.define(name, descriptor)：定义一个新对象，其属性和方法与给定的描述符对象相同。
+      // 21、Reflect.create(constructor, ...args)：创建一个新的实例，该实例的属性和方法与给定的构造函数和参数相同。
+      // 22、Reflect.get(obj, prop, ...args)：获取对象 obj 的属性 prop 的值，如果属性不存在，返回 undefined。
+      // 23、Reflect.set(obj, prop, value, ...args)：设置对象 obj 的属性 prop 的值。
+      // 24、Reflect.delete(obj, prop, ...args)：删除对象 obj 的属性 prop。
+      // 25、Reflect.has(obj, prop, ...args)：检查对象 obj 是否具有属性 prop。如果具有属性，返回 true，否则返回 false。
+      // 以下是一些使用 Reflect 对象的示例：
+      const obj = {
+        name: "张三",
+        age: 30,
+      };
+
+      const name = Reflect.get(obj, "name"); // 输出 "张三"
+      const age = Reflect.get(obj, "age"); // 输出 30
+
+      // 设置对象属性
+      Reflect.set(obj, "name", "李四");
+      Reflect.set(obj, "age", 31);
+
+      console.log(obj.name); // 输出 "李四"
+      console.log(obj.age); // 输出 31
+
+      //   // 删除对象属性
+      //   Reflect.delete(obj, "name");
+      //   Reflect.delete(obj, "age");
+
+      //   console.log(obj); // 输出 {}
+
+      //   // 检查对象是否具有属性
+      //   const hasName = Reflect.has(obj, "name");
+      //   const hasAge = Reflect.has(obj, "age");
+
+      //   console.log(hasName); // 输出 false
+      //   console.log(hasAge); // 输出 false
+
+      //   // 获取对象所有属性的名称数组
+      //   const keys = Reflect.getOwnPropertyNames(obj);
+      console.log(obj);
+    </script>
+  </body>
+</html>

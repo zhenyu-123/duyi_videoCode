@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        a: 1,
+        b: 2,
+        c: {
+          c1: 3,
+          c2: 4,
+        },
+      };
+      function _isObject(obj) {
+        return obj !== null && typeof obj === "object";
+      }
+      function observe(obj) {
+        for (let k in obj) {
+          let v = obj[k];
+          if (_isObject(v)) {
+            observe(v);
+          }
+          Object.defineProperty(obj, k, {
+            get: function () {
+              console.log(`${k}读取`);
+              return v;
+            },
+            set: function (value) {
+              if (value !== v) {
+                console.log(k, "更改", value);
+                v = value;
+                return obj;
+              }
+            },
+          });
+        }
+      }
+      // 观察
+      // observe(obj);
+      // // 无法动态捕获新增和删除的属性
+      // obj.a = 4;
+      // console.log(obj);
+
+      // vue3
+      function observe2(obj) {
+        const proxy = new Proxy(obj, {
+          get(target, key, receiver) {
+            console.log(`${key}读取`);
+            return Reflect.get(target, key, receiver);
+          },
+          set(target, key, value, receiver) {
+            console.log(key, "更改", value, receiver);
+            return Reflect.set(target, key, value, receiver);
+          },
+          has(target, key) {
+            console.log(key, "是否存在");
+            return Reflect.has(target, key);
+          },
+          ownKeys(target) {
+            console.log("获取所有属性");
+            return Reflect.ownKeys(target);
+          },
+          deleteProperty(target, key) {
+            console.log("删除属性");
+            return Reflect.deleteProperty(target, key);
+          },
+          getOwnPropertyDescriptor(target, key) {
+            console.log("获取属性描述符");
+            return Reflect.getOwnPropertyDescriptor(target, key);
+          },
+        });
+        return proxy;
+      }
+      const proxy = observe2(obj);
+      proxy.c.c1 = 11;
+      proxy.d = {};
+      proxy.c.c3 = 12;
+      // Reflect.deleteProperty(proxy, "a");
+      console.log(obj);
+    </script>
+  </body>
+</html>

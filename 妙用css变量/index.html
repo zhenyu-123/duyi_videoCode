@@ -6,6 +6,7 @@
     <title>Document</title>
   </head>
   <style>
+    /* 在这里定义的css变量，叫做全局css变量。在任何选择器中，都可以去使用。 */
     /* :root {
       --w: 500px;
     } */
@@ -32,6 +33,7 @@
         ); /*父元素宽度减去子元素宽度*/
       }
     }
+    /* var()函数还可以使用第二个参数，表示变量的默认值。如果该变量不存在，就会使用这个默认值。 color: var(--bar,red); */
   </style>
   <body>
     <div class="container">
@@ -41,7 +43,11 @@
       const container = document.querySelector(".container");
       const item = document.querySelector(".item");
       item.style.setProperty("--w", container.clientWidth + "px");
- 
+
+      // 更多使用方式：https://blog.csdn.net/Raccon_/article/details/128331765
+
+      // 在css中，如何将一个数字拼接上一个单位（使用calc 函数,并且*1px）
+      // width:calc(v-bind('obj.w') * 1px)
     </script>
   </body>
 </html>

@@ -1,0 +1,103 @@
+<!--
+ * @Description: 
+ * @Autor: sy
+ * @Date: 2023-11-20 09:05:23
+ * @LastEditors: sy
+ * @LastEditTime: 2023-11-20 10:39:31
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .content {
+        width: 300px;
+        height: 240px;
+        border: 1px solid #000;
+      }
+      .content .p {
+        line-height: 40px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="p">ResizeObserver使用方法</div>
+      <div class="p">
+        ResizeObserver提供了更直接的方法，直接监听元素的尺寸变化。
+      </div>
+    </div>
+
+    <script>
+      const ele = document.querySelector(".content");
+      function resizeDom() {
+        let i = 0;
+        let timer = setInterval(() => {
+          i += 30;
+          ele.style.height = i + "px";
+          if (i >= 240) {
+            clearInterval(timer);
+          }
+          //   console.log(ele.getBoundingClientRect());
+        }, 2000);
+      }
+      function main() {
+        //1、 定义ResizeObserver对象，并设置监听方法
+        const ro = new ResizeObserver((entries) => {
+          console.log(entries);
+        });
+        // 添加要监听的元素
+        ro.observe(ele);
+      }
+      main();
+      resizeDom();
+      //   //  2、 监听浏览器窗口大小发生变化
+      //   window.onresize = function () {
+      //     console.log(ele.getBoundingClientRect());
+      //   };
+    </script>
+    <style>
+      /*
+      1、getBoundingClientRect() 
+      Element.getBoundingClientRect() 方法返回一个 DOMRect 对象，其提供了元素的大小及其相对于视口的位置。
+
+      2、ResizeObserver
+      ResizeObserver是对DOM元素宽高的变化进行监听，平时我们用到的监听是窗口的变化 onresize 方法。当窗口没有发生改变，DOM元素发生后就法进行监听。
+       // 可以监听多个DOM元素
+        resizeObserver.observe(DOM1)
+        resizeObserver.observe(DOM2)
+        resizeObserver.observe(DOM3)
+        // 取消所有DOM
+        resizeObserver.disconnect()
+        // 取消一个DOM
+        resizeObserver.unobserve(DOM1)
+ 
+      3、IntersectionObserver
+      IntersectionObserver是监听DOM元素是否可见，常见用法比如图片的懒加载
+        const intersectionObserver = new IntersectionObserver((entries) => {
+            // 如果 intersectionRatio <= 0，则目标在视野外
+            if (entries[0].intersectionRatio <= 0) return
+        })
+        //监听 同上
+        intersectionObserver.observe(DOM)
+        intersectionObserver.disconnect()
+        intersectionObserver.unobserve(DOM)
+
+        4、MutationObserver
+      MutationObserver可以监听DOM节点的属性、子节点的添加/删除以及文本节点的更改等，常见用法比如监听DOM元素的添加和删除
+        const mutationObserver = new MutationObserver((mutations) => {
+            // 监听DOM元素的添加和删除
+            console.log(mutations)
+        })
+        // 监听DOM元素的添加和删除
+        mutationObserver.observe(DOM, {
+            childList: true,
+      */
+
+      /* MutationObserver、IntersectionObserver和ResizeObserver的用法和区别： https://blog.csdn.net/weixin_45532665/article/details/134162568 */
+    </style>
+  </body>
+</html>
