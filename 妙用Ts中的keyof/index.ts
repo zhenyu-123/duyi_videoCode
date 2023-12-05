@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Autor: sy
+ * @Date: 2023-11-10 15:23:33
+ * @LastEditors: sy
+ * @LastEditTime: 2023-12-05 10:00:42
+ */
 // *****************************1***********************************
 interface Point {
   x: number;
