@@ -1,0 +1,43 @@
+<!--
+ * @Description: 
+ * @Autor: sy
+ * @Date: 2024-01-02 09:42:13
+ * @LastEditors: sy
+ * @LastEditTime: 2024-01-02 10:36:49
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .content {
+      border: 1px solid #333;
+    }
+  </style>
+  <body>
+    <button class="btn">进入\退出全屏</button>
+    <p class="content">
+      安装了node.js之后，使用npm --version可能会提示 ‘npm’
+      不是内部或外部命令,也不是可运行的程序 或批处理文件。
+      原因：可能是环境变量没配置好 1、在“此电脑”中点击右键然后点击属性
+      安装了node.js之后，使用npm --version可能会提示 ‘npm’
+      不是内部或外部命令,也不是可运行的程序 或批处理文件。
+      原因：可能是环境变量没配置好 1、在“此电脑”中点击右键然后点击属性
+    </p>
+  </body>
+  <script type="module">
+    import { toggle } from "./fullScreen.js";
+    const btn = document.querySelector(".btn");
+    const p = document.querySelector(".content");
+    btn.onclick = function () {
+      toggle(document.documentElement);
+      //   p.requestFullscreen();
+    };
+    // function fn() {
+    //   p.requestFullscreen();
+    // }
+  </script>
+</html>
